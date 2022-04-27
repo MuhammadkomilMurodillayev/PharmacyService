@@ -9,6 +9,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
+
+    private static final String[] WHITE_LIST = {
+            "/login",
+            "/sw"
+    };
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         super.configure(auth);
@@ -16,10 +22,11 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests()
-                .anyRequest().authenticated()
-                .and()
-                .httpBasic();
+        http.csrf().disable();
+        http.cors().disable();
+        http.authorizeRequests()
+                .antMatchers(WHITE_LIST)
+                .permitAll()
+                .anyRequest().authenticated();
     }
 }

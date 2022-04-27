@@ -1,8 +1,7 @@
-package com.example.pharmacyService.entity.organization;
+package com.example.pharmacyService.entity.clinic;
 
 import com.example.pharmacyService.entity.Auditable;
 import com.example.pharmacyService.entity.region.Region;
-import io.swagger.v3.oas.annotations.tags.Tags;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,6 +20,10 @@ public class Clinic extends Auditable {
 
     @Column(columnDefinition = "int2 default 0")
     private short status;
+
+    private Double latitude;
+
+    private Double longitude;
 
     @ManyToOne
     @JoinColumn(name = "region_id")

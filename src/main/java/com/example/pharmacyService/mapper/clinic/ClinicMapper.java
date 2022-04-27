@@ -1,9 +1,9 @@
-package com.example.pharmacyService.mapper.organization;
+package com.example.pharmacyService.mapper.clinic;
 
 import com.example.pharmacyService.mapper.BaseMapper;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
-public class OrganizationMapper implements BaseMapper {
+public class ClinicMapper implements BaseMapper {
 
 }

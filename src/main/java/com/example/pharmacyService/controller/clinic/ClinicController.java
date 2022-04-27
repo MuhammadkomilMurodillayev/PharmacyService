@@ -1,13 +1,13 @@
-package com.example.pharmacyService.controller.organization;
+package com.example.pharmacyService.controller.clinic;
 
 import com.example.pharmacyService.controller.AbstractController;
 import com.example.pharmacyService.controller.BaseCrudController;
-import com.example.pharmacyService.criteria.organization.OrganizationCriteria;
+import com.example.pharmacyService.criteria.clinic.ClinicCriteria;
 import com.example.pharmacyService.dto.DataDto;
-import com.example.pharmacyService.dto.organization.OrganizationCreateDto;
-import com.example.pharmacyService.dto.organization.OrganizationDto;
-import com.example.pharmacyService.dto.organization.OrganizationUpdateDto;
-import com.example.pharmacyService.service.organization.OrganizationService;
+import com.example.pharmacyService.dto.clinic.ClinicCreateDto;
+import com.example.pharmacyService.dto.clinic.ClinicDto;
+import com.example.pharmacyService.dto.clinic.ClinicUpdateDto;
+import com.example.pharmacyService.service.clinic.ClinicService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -17,20 +17,20 @@ import java.util.List;
 
 @RestController
 @PreAuthorize(value = "hasRole('SUPER_ADMIN')")
-@RequestMapping("/organization/")
-public class OrganizationController
-        extends AbstractController<OrganizationService>
+@RequestMapping("/clinic/")
+public class ClinicController
+        extends AbstractController<ClinicService>
         implements BaseCrudController<
-        OrganizationDto,
-        OrganizationCreateDto,
-        OrganizationUpdateDto,
-        OrganizationCriteria,
+        ClinicDto,
+        ClinicCreateDto,
+        ClinicUpdateDto,
+        ClinicCriteria,
         String> {
 
 
     @PostMapping("create")
     @Override
-    public ResponseEntity<DataDto<String>> create(@RequestBody OrganizationCreateDto dto) {
+    public ResponseEntity<DataDto<String>> create(@RequestBody ClinicCreateDto dto) {
         String id = service.create(dto);
         return new ResponseEntity<>(new DataDto<>(id), HttpStatus.OK);
     }
@@ -44,19 +44,19 @@ public class OrganizationController
 
     @PutMapping("update/{id}")
     @Override
-    public ResponseEntity<DataDto<OrganizationDto>> update(@PathVariable(name = "id") OrganizationUpdateDto dto) {
+    public ResponseEntity<DataDto<ClinicDto>> update(@PathVariable(name = "id") ClinicUpdateDto dto) {
         return null;
     }
 
     @GetMapping("get/{id}")
     @Override
-    public ResponseEntity<DataDto<OrganizationDto>> get(@PathVariable(name = "id") String id) {
+    public ResponseEntity<DataDto<ClinicDto>> get(@PathVariable(name = "id") String id) {
         return null;
     }
 
     @GetMapping("getAll")
     @Override
-    public ResponseEntity<DataDto<List<OrganizationDto>>> getAll(@RequestBody OrganizationCriteria criteria) {
+    public ResponseEntity<DataDto<List<ClinicDto>>> getAll(@RequestBody ClinicCriteria criteria) {
         return null;
     }
 }
